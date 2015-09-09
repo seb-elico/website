@@ -46,7 +46,6 @@ $(document).ready(function () {
             this.$('.alert-warning').remove();
             this.is_valid_url = false;
             this.$('.save').button('loading');
-            debugger
             ajax.jsonRpc('/slides/dialog_preview/', 'call', value).then(function (data) {
                 self.$('.save').button('reset');
                 if (data.error) {
@@ -355,10 +354,10 @@ $(document).ready(function () {
     // bind the event to the button
     $('.oe_slide_js_upload').on('click', function () {
         var channel_id = $(this).attr('channel_id');
-        debugger
         slides.page_widgets['upload_dialog'] = new SlideDialog(this, channel_id).appendTo(document.body);
     });
 
 });
 
 })();
+

@@ -53,21 +53,12 @@
         Loading all this assets in a bundle can be problematic in debug mode, since we don't wait all assets to be loaded to start using PDFJS. That's why, in debug mode, we use the native loader,
         otherwise our custom loader is used.
     -->
-    <t t-if="not debug">
-        <script>
-            // Use Odoo PDFJS Loader, to avoid dynamic assets loading
-            PDFJS.workerSrc = '/website_slides/static/lib/pdfjs/worker_loader_by_odoo.js';
-            PDFJS.disableWorker = true;
-        </script>
-    </t>
-    <t t-if="debug">
-        <script>
-            // Specify the main script used to create a new PDF.JS web worker.
-            // In production, leave this undefined or change it to point to the
-            // combined `pdf.worker.js` file.
-            PDFJS.workerSrc = '/website_slides/static/lib/pdfjs/worker_loader.js';
-        </script>
-    </t>
+    <script>
+        // Specify the main script used to create a new PDF.JS web worker.
+        // In production, leave this undefined or change it to point to the
+        // combined `pdf.worker.js` file.
+        PDFJS.workerSrc = '/website_slides/static/lib/pdfjs/worker_loader.js';
+    </script>
     <!--
         If no loader defined, this file will try to load pdf.worker.js (in build/).
         It will crash since we don't use the minified version of PDFJS
